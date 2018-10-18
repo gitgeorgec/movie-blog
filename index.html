@@ -11,12 +11,12 @@
     <header>
         <nav class="navbar">
             <div class="navbr__brand">
-                MOVIE BlOG
+                    <a href="">MOVIE BlOG</a>
             </div>
-            <div class="search hide">
-                    <input class="search__input" type="text" placeholder="movie name">
-                    <button class="search__button">search</button>
-            </div>
+            <form action="" method="GET" class="search hide">
+                <input class="search__input" type="text" name="movie" placeholder="movie name" autocomplete="off" required>
+                <button class="search__button">search</button>
+            </form>
             <ul class="navbar__list">
                 <li class="navbar__list__item"><a href="">logIn</a></li>
                 <li class="navbar__list__item"><a href="">signUp</a></li>
@@ -25,62 +25,33 @@
     </header>
     <main>
         <div class="jumbotron">
-            <h1 class="jumbotron__title"><a href="">Welcom to MOVIE BLOG</a></h1>
+            <h1 class="jumbotron__title"><a href="">Welcom to MOVIE DB</a></h1>
             <p>getting start now</p>
-            <div class="search">
-                <input class="search__input" type="text" placeholder="movie name">
-                <button class="search__button">search</button>
-            </div>
+            <form action="" method="GET" class="search">
+                <input class="search__input" type="text" name="movie" placeholder="movie name" autocomplete="off" required>
+                <button type="submit" class="search__button">search</button>
+            </form>
             <div style="position: absolute; bottom: 0; right: 0;">
                 <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif; font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px; " href="https://unsplash.com/@felixmooneeram?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Felix Mooneeram"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span>Felix Mooneeram</a>
             </div>
         </div>
+        <div class="content__title">RECENT MOVIE<hr></div>
         <div class="content">
-            <div class="content__title">RECENT POST<hr></div>
-            
             <div class="content__card">
                 <img src="./sample1.jpg" alt="" class="content__card__img">
                 <h3 class="content__card__title">title</h3>
                 <p class="content__card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse illo modi iusto eos, exercitationem ducimus expedita, unde qui assumenda sunt odio temporibus, ipsum officia nam aliquam accusamus architecto neque. Totam.
                 </p>
             </div>
-            <div class="content__card">
-                <img src="./sample1.jpg" alt="" class="content__card__img">
-                <h3 class="content__card__title">title</h3>
-                <p class="content__card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse illo modi iusto eos, exercitationem ducimus expedita, unde qui assumenda sunt odio temporibus, ipsum officia nam aliquam accusamus architecto neque. Totam.
-                </p>
-            </div>
-            <div class="content__card">
-                <img src="./sample1.jpg" alt="" class="content__card__img">
-                <h3 class="content__card__title">title</h3>
-                <p class="content__card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse illo modi iusto eos, exercitationem ducimus expedita, unde qui assumenda sunt odio temporibus, ipsum officia nam aliquam accusamus architecto neque. Totam.
-                </p>
-            </div>
-            <div class="content__card">
-                <img src="./sample1.jpg" alt="" class="content__card__img">
-                <h3 class="content__card__title">title</h3>
-                <p class="content__card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse illo modi iusto eos, exercitationem ducimus expedita, unde qui assumenda sunt odio temporibus, ipsum officia nam aliquam accusamus architecto neque. Totam.
-                </p>
-            </div>
-            <div class="content__card">
-                <img src="./sample1.jpg" alt="" class="content__card__img">
-                <h3 class="content__card__title">title</h3>
-                <p class="content__card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse illo modi iusto eos, exercitationem ducimus expedita, unde qui assumenda sunt odio temporibus, ipsum officia nam aliquam accusamus architecto neque. Totam.</p>
-            </div>
-            <div class="content__card">
-                <img src="./sample1.jpg" alt="" class="content__card__img">
-                <h3 class="content__card__title">title</h3>
-                <p class="content__card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse illo modi iusto eos, exercitationem ducimus expedita, unde qui assumenda sunt odio temporibus, ipsum officia nam aliquam accusamus architecto neque. Totam.</p>
-            </div>
-            <div class="content__card">
-                <img src="./sample1.jpg" alt="" class="content__card__img">
-                <h3 class="content__card__title">title</h3>
-                <p class="content__card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse illo modi iusto eos, exercitationem ducimus expedita, unde qui assumenda sunt odio temporibus, ipsum officia nam aliquam accusamus architecto neque. Totam.</p>
-            </div>
-            <div class="content__card hide"></div>
-            <div class="content__card hide"></div>
+
         </div>
     </main>
+    <label>
+            <input id="more" type="checkbox">Read more
+            <div id="content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+          </label>
     <footer>
         <div class="footer">
             <ul class="footer__list hide">
@@ -97,6 +68,7 @@
                 </div>
             </div>
         </div>
+
     </footer>
 <script src="app.js"></script>
 </body>

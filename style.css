@@ -3,6 +3,8 @@ body {
     background-color:rgb(7, 7, 7);
     position: relative;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    position: relative;
 }
 
 .navbar {
@@ -43,7 +45,7 @@ body {
 }
 
 .jumbotron {
-    background: url("./felix-mooneeram-222805-unsplash.jpg") no-repeat center;
+    background: url("./felix-mooneeram-222805-unsplash-compressor.jpg") no-repeat center;
     background-size: 100% auto;
     width: 100%;
     height: 100vh;
@@ -55,6 +57,7 @@ body {
     font-size: 2rem;
     text-align: center;
     position: relative;
+    transition: 0.5s;
 }
 
 .jumbotron >*{
@@ -66,6 +69,7 @@ body {
     width: 600px;
     display: flex;
     box-shadow: 0px 0px 40px rgb(218, 217, 217);
+    transition: transform 0.2s
 }
 
 .search__input{
@@ -102,8 +106,7 @@ body {
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
-    margin: 20px;
-    margin-top: 3rem;
+    padding-top: 4.5rem;
 }
 
 .content__card {
@@ -112,7 +115,7 @@ body {
     box-sizing: border-box;
     background: white;
     transform: scale(0.98);
-    transition: transform 0.2s
+    transition: 0.5s
 }
 
 .content__card:hover{
@@ -135,10 +138,9 @@ body {
 }
 
 .content__card__text {
+    height: 3.6rem;
     margin: 5px 20px;
     overflow:hidden;
-    white-space:nowrap;
-    text-overflow:ellipsis;
 }
 
 .footer {
@@ -151,6 +153,8 @@ body {
     padding: 0 30px 0 30px;
     box-sizing: border-box;
     user-select: none;
+    position: relative;
+    bottom: 0;
 }
 
 .footer__list {
@@ -202,3 +206,15 @@ hr {
 .tmdb_logo {
     width: 300px;
 }
+
+#content {
+    color: white;
+    overflow: hidden;
+    height: 3.6em;
+    line-height: 1.2em;
+    width: 200px;
+  }
+  
+  #more:checked + div {
+    height: auto;
+  }
