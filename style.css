@@ -1,0 +1,204 @@
+body {
+    margin:0;
+    background-color:rgb(7, 7, 7);
+    position: relative;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 4rem;
+    background: linear-gradient(to right, rgb(2, 2, 2), rgb(121, 120, 120), rgb(2, 2, 2));;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 0 30px 0 30px;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.navbr__brand {
+    font-size: 2.5rem;
+}
+
+.navbar__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar__list__item {
+    list-style: none;
+    margin:0 10px;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.navbar__list__item>a:hover{
+    color: rgb(240, 233, 12);
+    cursor: pointer;
+}
+
+.jumbotron {
+    background: url("./felix-mooneeram-222805-unsplash.jpg") no-repeat center;
+    background-size: 100% auto;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.jumbotron >*{
+    animation: fadein;
+    animation-duration: 3s;
+}
+
+.search {
+    width: 600px;
+    display: flex;
+    box-shadow: 0px 0px 40px rgb(218, 217, 217);
+}
+
+.search__input{
+    width: 80%;
+    font-size: 3rem;
+    border: none;
+    padding: 0 0 0 10px;
+}
+
+.search__button{
+    color: white;
+    width: 20%;
+    font-size: 1.6rem;
+    border: none;
+    background: rgb(29, 196, 29)
+}
+
+.search__button:active {
+    background: rgb(65, 48, 250);
+}
+
+.content {
+    width: 80%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content__title {
+    width: 100%;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
+    margin-top: 3rem;
+}
+
+.content__card {
+    width: 400px;
+    margin: 20px;
+    box-sizing: border-box;
+    background: white;
+    transform: scale(0.98);
+    transition: transform 0.2s
+}
+
+.content__card:hover{
+    transform: scale(1);
+    cursor: pointer;
+    filter:brightness(1.1)
+}
+
+.content__card__img {
+    max-width: 100%;
+    height: auto;
+    padding: 1px;
+    box-sizing: border-box;
+}
+
+.content__card__title {
+    text-align: center;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.content__card__text {
+    margin: 5px 20px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.footer {
+    background: rgb(131, 126, 126);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 0 30px 0 30px;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.footer__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.footer__list__item {
+    list-style: none;
+    margin:0 10px;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer__list__item>a:hover{
+    color: rgb(240, 233, 12);
+    cursor: pointer;
+}
+
+
+.hide {
+    transform: scale(0,0);
+    opacity:0;
+}
+@keyframes fadein {
+    0%{
+        opacity: 0;
+        transform: translate(0,15px)
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0,0)
+    }
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+}
+
+.tmdb_logo {
+    width: 300px;
+}
