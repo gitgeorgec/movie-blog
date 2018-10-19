@@ -5,6 +5,10 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     min-height: 100vh;
     position: relative;
+    background-image: url("./christian-wiediger-622476-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh; 
+    background-attachment: fixed;
 }
 
 .navbar {
@@ -98,6 +102,7 @@ body {
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
+
 }
 
 .content__title {
@@ -120,15 +125,20 @@ body {
 
 .content__card:hover{
     transform: scale(1);
-    cursor: pointer;
     filter:brightness(1.1)
 }
 
 .content__card__img {
-    max-width: 100%;
+    max-width: 360px;
     height: auto;
     padding: 1px;
     box-sizing: border-box;
+    display: block;
+    margin: 15px auto;
+}
+
+.content__card__img:hover {
+    cursor: pointer;
 }
 
 .content__card__title {
@@ -137,11 +147,36 @@ body {
     font-size: 2rem;
 }
 
+.content__card__title:hover{
+    cursor: pointer;
+}
+
 .content__card__text {
-    height: 3.6rem;
+    position: relative;
+    height: 1.5rem;
     margin: 5px 20px;
     overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    padding-bottom: 1rem;
 }
+
+.content__card__text::before {
+    content: "click to read more";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(29, 106, 154, 0.72);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.content__card__text:hover::before {
+    visibility: visible;
+    opacity: 1;
+  }
 
 .footer {
     background: rgb(131, 126, 126);
@@ -207,14 +242,10 @@ hr {
     width: 300px;
 }
 
-#content {
-    color: white;
-    overflow: hidden;
-    height: 3.6em;
-    line-height: 1.2em;
-    width: 200px;
-  }
-  
-  #more:checked + div {
+.content__card__text_toggle:checked +p{
     height: auto;
-  }
+    white-space:normal;
+}
+.content__card__text_toggle:checked +.content__card__text::before {
+    content: "click to read less"
+}
