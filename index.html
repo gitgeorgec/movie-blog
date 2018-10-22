@@ -17,15 +17,19 @@
                 <input class="search__input" type="text" name="movie" placeholder="movie name" autocomplete="off" required>
                 <button class="search__button">search</button>
             </form>
-            <ul class="navbar__list">
+            <ul class="navbar__list hide">
                 <li class="navbar__list__item"><a href="">logIn</a></li>
                 <li class="navbar__list__item"><a href="">signUp</a></li>
             </ul>
         </nav>
     </header>
     <main>
+        <div class="show hide">
+            <span class="close">X</span>
+            <div class="show__content"></div>
+        </div>
         <div class="jumbotron">
-            <h1 class="jumbotron__title"><a href="">Welcom to MOVIE DB</a></h1>
+            <h1 class="jumbotron__title">Welcom to MOVIE DB</h1>
             <p>search movie and get the information </p>
             <form action="" method="GET" class="search">
                 <input class="search__input" type="text" name="movie" placeholder="movie name" autocomplete="off" required>
@@ -37,17 +41,8 @@
         </div>
         <div class="content__title">RECENT MOVIE<hr></div>
         <div class="content">
-            <!-- <div class="content__card">
-                <img src="" alt="" class="content__card__img">
-                <h3 class="content__card__title">title</h3>
-                <label>
-                    <input type="checkbox" class="content__card__text_toggle" hidden>
-                    <p class="content__card__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse illo modi iusto eos, exercitationem ducimus expedita, unde qui assumenda sunt odio temporibus, ipsum officia nam aliquam accusamus architecto neque. Totam.</p>
-                </label>
-            </div> -->
         </div>
     </main>
-
     <footer>
         <div class="footer">
             <ul class="footer__list hide">
@@ -57,11 +52,11 @@
                 <li class="footer__list__item"><a href="#">Privacy Policy</a></li>
             </ul>
             <div class="footer__copyright">
-                <p>Copyright &copy;2018, All Right Reserved</p>
                 <div class="tmdb_logo">
-                    <img src="https://www.themoviedb.org/assets/1/v4/logos/208x226-stacked-green-9484383bd9853615c113f020def5cbe27f6d08a84ff834f41371f223ebad4a3c.png" alt="" width="50px"  style="float: left; margin-right: 10px;">
-                    <p>This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
+                    <p><img src="https://www.themoviedb.org/assets/1/v4/logos/208x226-stacked-green-9484383bd9853615c113f020def5cbe27f6d08a84ff834f41371f223ebad4a3c.png" alt="" width="50px"  style="float: left; margin-right: 10px;">
+                    This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
                 </div>
+                <p>Copyright &copy;2018, All Right Reserved</p>
             </div>
         </div>
 

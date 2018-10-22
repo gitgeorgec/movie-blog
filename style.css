@@ -5,29 +5,80 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     min-height: 100vh;
     position: relative;
-    background-image: url("./christian-wiediger-622476-unsplash.jpg");
+    background: linear-gradient(to right, rgb(198, 2, 2), rgb(247, 200, 14), rgb(198, 2, 2));;;
     background-repeat: no-repeat;
     background-size: 100vw 100vh; 
     background-attachment: fixed;
+    background-color: black; 
+    width: 100vw;
+}
+
+.show {
+    width: 90vw;
+    height: 90vh;
+    position: fixed;
+    left: 5vw;
+    top: 5vh;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.639);
+    overflow: auto;
+    color: white;
+    transition: 0.2s;
+    font-size: 2em;
+    text-align: center;
+    padding-top: 3rem; 
+}
+
+.show__content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.show__content__card {
+    height: 150px;
+    width: 200px;
+    margin: 0 5% 5% 5%;
+    box-sizing: border-box;
+}
+
+.close{
+    width: 20px;
+    height: 20px;
+    position: fixed;
+    background: rgb(191, 52, 52);
+    color: white;
+    font-size: 15px;
+    font-weight: bolder;
+    text-align: center;
+    right:5vw;
+    top: 3rem; 
+}
+
+.close:hover{
+    cursor: pointer;
+    filter:brightness(1.4)
 }
 
 .navbar {
     position: fixed;
     z-index: 1;
-    width: 100%;
+    width: 100vw;
     height: 4rem;
     background: linear-gradient(to right, rgb(2, 2, 2), rgb(121, 120, 120), rgb(2, 2, 2));;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
-    padding: 0 30px 0 30px;
     box-sizing: border-box;
     user-select: none;
+    font-size: 12px;
 }
 
 .navbr__brand {
-    font-size: 2.5rem;
+    font-size: 1em;
+    font-weight: bolder;
 }
 
 .navbar__list {
@@ -38,9 +89,9 @@ body {
 
 .navbar__list__item {
     list-style: none;
-    margin:0 10px;
-    font-size: 1.6rem;
+    margin:5px;
     font-weight: bold;
+    box-sizing: border-box;
 }
 
 .navbar__list__item>a:hover{
@@ -51,6 +102,7 @@ body {
 .jumbotron {
     background: url("./felix-mooneeram-222805-unsplash-compressor.jpg") no-repeat center;
     background-size: 100% auto;
+    background-color:black; 
     width: 100%;
     height: 100vh;
     display: flex;
@@ -58,7 +110,7 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 2rem;
+    font-size: 16px;
     text-align: center;
     position: relative;
     transition: 0.5s;
@@ -70,25 +122,27 @@ body {
 }
 
 .search {
-    width: 600px;
+    min-width: 180px;
+    width: 50%;
     display: flex;
     box-shadow: 0px 0px 40px rgb(218, 217, 217);
-    transition: transform 0.2s
+    transition: transform 0.2s;
+    font-size: 10px;
 }
 
 .search__input{
-    width: 80%;
-    font-size: 3rem;
+    width: 70%;
     border: none;
     padding: 0 0 0 10px;
+    font-size: 12px;
 }
 
 .search__button{
     color: white;
-    width: 20%;
-    font-size: 1.6rem;
+    width: 30%;
     border: none;
-    background: rgb(29, 196, 29)
+    background: rgb(29, 196, 29);
+    font-size: 12px;
 }
 
 .search__button:active {
@@ -96,13 +150,12 @@ body {
 }
 
 .content {
-    width: 80%;
+    width: 70%;
     box-sizing: border-box;
     margin: 0 auto;
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
-
 }
 
 .content__title {
@@ -115,7 +168,7 @@ body {
 }
 
 .content__card {
-    width: 400px;
+    width: 360px;
     margin: 20px;
     box-sizing: border-box;
     background: white;
@@ -144,7 +197,7 @@ body {
 .content__card__title {
     text-align: center;
     margin: 0;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 .content__card__title:hover{
@@ -153,7 +206,7 @@ body {
 
 .content__card__text {
     position: relative;
-    height: 1.5rem;
+    height: inherit;
     margin: 5px 20px;
     overflow:hidden;
     white-space:nowrap;
@@ -180,7 +233,7 @@ body {
 
 .footer {
     background: rgb(131, 126, 126);
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -190,19 +243,30 @@ body {
     user-select: none;
     position: relative;
     bottom: 0;
+    font-size: 12px;
+    flex-direction: column;
 }
 
 .footer__list {
+    width: 100vw;
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: space-around;
 }
 
 .footer__list__item {
     list-style: none;
     margin:0 10px;
-    font-size: 1.6rem;
+    font-size: inherit;
     font-weight: bold;
+}
+
+.footer__copyright {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
 }
 
 a {
@@ -215,6 +279,9 @@ a {
     cursor: pointer;
 }
 
+.tmdb_logo {
+    display: flex;
+}
 
 .hide {
     transform: scale(0,0);
@@ -223,7 +290,7 @@ a {
 @keyframes fadein {
     0%{
         opacity: 0;
-        transform: translate(0,15px)
+        transform: translate(0,35px)
     }
 
     100%{
@@ -238,9 +305,6 @@ hr {
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
 }
 
-.tmdb_logo {
-    width: 300px;
-}
 
 .content__card__text_toggle:checked +p{
     height: auto;
@@ -248,4 +312,73 @@ hr {
 }
 .content__card__text_toggle:checked +.content__card__text::before {
     content: "click to read less"
+}
+
+@media screen and (min-width:401px){
+    .show__content__card {
+        height: 300px;
+        width: 400px;
+    }
+
+    .navbar {
+        font-size: 16px;
+        padding: 0 15px 0 15px;
+    }
+
+    .jumbotron {
+        font-size: 24px;
+    }
+
+    .search__input,
+    .search__button {
+        font-size: 20px;
+    }
+
+    .footer {
+        font-size: 16px;
+    }
+}
+@media screen and (min-width:800px){
+    .show__content__card {
+        height: 360px;
+        width: 640px;
+    }
+
+    .navbar {
+        font-size: 20px;
+        padding: 0 30px 0 30px;
+    }
+    .jumbotron {
+        font-size: 32px;
+    }
+    .search__input,
+    .search__button{
+        font-size: 32px;
+    }
+
+    .footer {
+        font-size: 20px;
+    }
+}
+@media screen and (min-width:1680px){
+    .show__content__card {
+        height: 720px;
+        width: 1280px;
+    }
+
+    .navbar {
+        font-size: 24px;
+        padding: 0 30px 0 30px;
+    }
+    .jumbotron {
+        font-size: 36px;
+    }
+    .search__input,
+    .search__button{
+        font-size: 36px;
+    }
+
+    .footer {
+        font-size: 24px;
+    }
 }
