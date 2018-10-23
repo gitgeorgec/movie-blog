@@ -11,7 +11,6 @@ let page = 1
 let movie =""
 let dbRecentMovie =debounce(()=>handleScoll(recentMovie))
 let dbSearchMovie =debounce(()=>handleScoll(handleSearch))
-const api_key = "<your TMDb API KEY>"
 
 function createContetCard(data){
     const movieCard = document.createElement("div")
@@ -37,7 +36,7 @@ function createContetCard(data){
 }
 
 function recentMovie(){
-    const url ="https://api.themoviedb.org/3/movie/now_playing?api_key="+api_key+"&language=en-US&page="+page
+    const url ="/recentMovie/"+page
     fetch(url)
     .then(res=>res.json())
     .then(res=>{
@@ -47,7 +46,7 @@ function recentMovie(){
 }
 
 function handleSearch(e){
-    const url ="https://api.themoviedb.org/3/search/movie?api_key="+api_key
+    const url ="/searchMovie"
     const contentCard = document.querySelectorAll(".content__card")
     if(this.parentElement){
         movie = this.parentElement.querySelector(".search__input").value
@@ -63,7 +62,7 @@ function handleSearch(e){
         jumbo.classList.add("hide")
         navbar.querySelector(".search").classList.remove("hide")
     }
-    fetch(`${url}&query=${movie}&page=${page}`)
+    fetch(`${url}/${movie}/${page}`)
     .then(res=> {
         if(page===1)content.innerHTML=""
         if (res.status >= 400 && res.status < 600) {
@@ -124,7 +123,8 @@ function handleMoreInfo(){
     const id = this.parentElement.id
     show.classList.remove("hide")
     showContent.innerHTML=""   
-    const url =`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}`
+    showContent.innerHTML=""   
+    const url =`/getVideo/${id}`
     fetch(url)
     .then(res=>res.json())
     .then(res=>{

@@ -100,7 +100,7 @@ body {
 }
 
 .jumbotron {
-    background: url("./felix-mooneeram-222805-unsplash-compressor.jpg") no-repeat center;
+    background: url("../img/felix-mooneeram-222805-unsplash-compressor.jpg") no-repeat center;
     background-size: 100% auto;
     background-color:black; 
     width: 100%;
@@ -195,7 +195,7 @@ body {
 .placeholder {
     height: 454px;
     margin: 0;
-    background: url("./denise-jans-559588-unsplash.jpg") no-repeat center;
+    background: url("../img/denise-jans-559588-unsplash.jpg") no-repeat center;
     cursor: pointer;
 }
 
