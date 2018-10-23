@@ -5,7 +5,7 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     min-height: 100vh;
     position: relative;
-    background: linear-gradient(to right, rgb(198, 2, 2), rgb(247, 200, 14), rgb(198, 2, 2));;;
+    background: linear-gradient(to right, rgb(206, 0, 0), rgb(247, 154, 14), rgb(206, 0, 0));;;
     background-repeat: no-repeat;
     background-size: 100vw 100vh; 
     background-attachment: fixed;
@@ -173,7 +173,8 @@ body {
     box-sizing: border-box;
     background: white;
     transform: scale(0.98);
-    transition: 0.5s
+    transition: 0.5s;
+    position: relative;
 }
 
 .content__card:hover{
@@ -184,23 +185,25 @@ body {
 .content__card__img {
     max-width: 360px;
     height: auto;
-    padding: 1px;
+    border: 1px solid white;
     box-sizing: border-box;
     display: block;
-    margin: 15px auto;
+    margin: 0 auto;
+    cursor: pointer;
 }
 
-.content__card__img:hover {
+.placeholder {
+    height: 454px;
+    margin: 0;
+    background: url("./denise-jans-559588-unsplash.jpg") no-repeat center;
     cursor: pointer;
 }
 
 .content__card__title {
     text-align: center;
     margin: 0;
+    margin-top: 5px;
     font-size: 1rem;
-}
-
-.content__card__title:hover{
     cursor: pointer;
 }
 
@@ -351,6 +354,7 @@ hr {
     .jumbotron {
         font-size: 32px;
     }
+    
     .search__input,
     .search__button{
         font-size: 32px;
@@ -370,9 +374,11 @@ hr {
         font-size: 24px;
         padding: 0 30px 0 30px;
     }
+
     .jumbotron {
         font-size: 36px;
     }
+
     .search__input,
     .search__button{
         font-size: 36px;

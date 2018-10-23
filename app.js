@@ -11,6 +11,7 @@ let page = 1
 let movie =""
 let dbRecentMovie =debounce(()=>handleScoll(recentMovie))
 let dbSearchMovie =debounce(()=>handleScoll(handleSearch))
+const api_key = "<your TMDb API KEY>"
 
 function createContetCard(data){
     const movieCard = document.createElement("div")
@@ -18,7 +19,9 @@ function createContetCard(data){
     movieCard.classList.add("hide")
     movieCard.id = data.id
     movieCard.innerHTML=`
-    <img src="https://image.tmdb.org/t/p/w300/${data.poster_path}" alt="no pic" class="content__card__img">
+    <div class="placeholder" >
+        <img src="https://image.tmdb.org/t/p/w300/${data.poster_path}" alt="no pic" class="content__card__img">
+    </div>
     <h3 class="content__card__title">${data.original_title}</h3>
     <label>
         <input type="checkbox" class="content__card__text_toggle" hidden>
@@ -26,7 +29,7 @@ function createContetCard(data){
     </label>
     `
     content.appendChild(movieCard)
-    movieCard.querySelector(".content__card__img").addEventListener("click",handleMoreInfo)
+    movieCard.querySelector(".placeholder").addEventListener("click",handleMoreInfo)
     movieCard.querySelector(".content__card__title").addEventListener("click",handleMoreInfo)
     setTimeout(()=>{
         movieCard.classList.remove("hide")
@@ -34,7 +37,7 @@ function createContetCard(data){
 }
 
 function recentMovie(){
-    const url ="https://api.themoviedb.org/3/movie/now_playing?api_key=e162dc571aea1100fab3e5a190e6abd3&language=en-US&page="+page
+    const url ="https://api.themoviedb.org/3/movie/now_playing?api_key="+api_key+"&language=en-US&page="+page
     fetch(url)
     .then(res=>res.json())
     .then(res=>{
@@ -44,7 +47,7 @@ function recentMovie(){
 }
 
 function handleSearch(e){
-    const url ="https://api.themoviedb.org/3/search/movie?api_key=e162dc571aea1100fab3e5a190e6abd3"
+    const url ="https://api.themoviedb.org/3/search/movie?api_key="+api_key
     const contentCard = document.querySelectorAll(".content__card")
     if(this.parentElement){
         movie = this.parentElement.querySelector(".search__input").value
@@ -121,7 +124,7 @@ function handleMoreInfo(){
     const id = this.parentElement.id
     show.classList.remove("hide")
     showContent.innerHTML=""   
-    const url =`https://api.themoviedb.org/3/movie/${id}/videos?api_key=e162dc571aea1100fab3e5a190e6abd3`
+    const url =`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${api_key}`
     fetch(url)
     .then(res=>res.json())
     .then(res=>{
