@@ -7,7 +7,7 @@ let apikey=""
 try {
     apikey = require("./code")
 } catch (error) {
-    apikey = rprocess.env.APIKEY
+    apikey = process.env.APIKEY
 }
 
 
