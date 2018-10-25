@@ -1,66 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <title>Movie DB</title>
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <div class="navbr__brand">
-                <a href="">MOVIE DB</a>
-            </div>
-            <form action="" method="GET" class="search hide">
-                <input class="search__input" type="text" name="movie" placeholder="movie name" autocomplete="off" required>
-                <button class="search__button">search</button>
-            </form>
-            <ul class="navbar__list hide">
-                <li class="navbar__list__item"><a href="">logIn</a></li>
-                <li class="navbar__list__item"><a href="">signUp</a></li>
-            </ul>
-        </nav>
-    </header>
+<% include partials/header %>
     <main>
-        <div class="show hide">
-            <span class="close">X</span>
-            <div class="show__content"></div>
-        </div>
-        <div class="jumbotron">
-            <h1 class="jumbotron__title">Welcom to MOVIE DB</h1>
-            <p>search movie and get the information </p>
-            <form action="" method="GET" class="search">
-                <input class="search__input" type="text" name="movie" placeholder="movie name" autocomplete="off" required>
-                <button type="submit" class="search__button">search</button>
-            </form>
-            <div style="position: absolute; bottom: 0; right: 0;">
-                <a style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif; font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px; " href="https://unsplash.com/@felixmooneeram?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Felix Mooneeram"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z"></path></svg></span>Felix Mooneeram</a>
+        <div class="login">
+            <div class="login__title">
+                <p>Welcome <%= LoginUser.username %></p>
+                <div style="font-size: 140px">
+                    <% if(LoginUser.img){ %>
+                        <img src="<%= LoginUser.img%>" alt="nopic"/>
+                    <% }else{ %>
+                        <i class="fas fa-user" ></i>
+                    <% } %>
+                </div>
+                <hr>
             </div>
-        </div>
-        <div class="content__title">RECENT MOVIE<hr></div>
-        <div class="content">
+            <div class="collection">
+                <div class="collection__item">
+                    <div class="collection__title">recent article</div>
+                    <div class="collection__content">
+                        <div class="commit">
+                            <div class="commit__title">Movie1</div>
+                            <div class="commit_img">
+                                <img src="" alt="nopic">
+                            </div>
+                            <div class="commit__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ipsa ratione quis autem cumque sunt sequi, pariatur nesciunt doloribus impedit, adipisci placeat! Sunt eum temporibus fugit explicabo placeat sint reiciendis!</div>
+                        </div>
+                        <div class="commit">
+                            <div class="commit__title">Movie2</div>
+                            <div class="commit_img">
+                                <img src="" alt="nopic">
+                            </div>
+                            <div class="commit__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ipsa ratione quis autem cumque sunt sequi, pariatur nesciunt doloribus impedit, adipisci placeat! Sunt eum temporibus fugit explicabo placeat sint reiciendis!</div>
+                        </div>
+                        <div class="commit">
+                            <div class="commit__title">Movie3</div>
+                            <div class="commit_img">
+                                <img src="" alt="nopic">
+                            </div>
+                            <div class="commit__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ipsa ratione quis autem cumque sunt sequi, pariatur nesciunt doloribus impedit, adipisci placeat! Sunt eum temporibus fugit explicabo placeat sint reiciendis!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="collection__item">
+                    <div class="collection__title">my friends</div>
+                    <div class="collection__content hide">
+                        <div class="friend">
+                            <div class="friend__name">Tom</div>
+                            <div class="friend_img">
+                                <img src="" alt="nopic">
+                            </div>
+                        </div>
+                        <div class="friend">
+                            <div class="friend__name">Jimmy</div>
+                            <div class="friend_img">
+                                <img src="" alt="nopic">
+                            </div>
+                        </div>
+                        <div class="friend">
+                            <div class="friend__name">Sara</div>
+                            <div class="friend_img">
+                                <img src="" alt="nopic">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="collection__item">
+                    <div class="collection__title">new movie review</div>
+                    <div class="collection__content hide">
+                        <div class="collection__content__search">
+                            <form action="" method="GET" class="search">
+                                <input class="search__input" type="text" name="movie" placeholder="movie name" autocomplete="off" required>
+                                <button type="submit" class="search__button">search</button>
+                            </form>
+                            <div class="content__title">RECENT MOVIE<hr></div>
+                            <div class="content">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
-    <footer>
-        <div class="footer">
-            <ul class="footer__list hide">
-                <li class="footer__list__item"><a href="#">Home</a></li>
-                <li class="footer__list__item"><a href="#">About</a></li>
-                <li class="footer__list__item"><a href="#">Contact</a></li>
-                <li class="footer__list__item"><a href="#">Privacy Policy</a></li>
-            </ul>
-            <div class="footer__copyright">
-                <div class="tmdb_logo">
-                    <p><img src="https://www.themoviedb.org/assets/1/v4/logos/208x226-stacked-green-9484383bd9853615c113f020def5cbe27f6d08a84ff834f41371f223ebad4a3c.png" alt="" width="50px"  style="float: left; margin-right: 10px;">
-                    This product uses the TMDb API but is not endorsed or certified by TMDb.</p>
-                </div>
-                <p>Copyright &copy;2018, All Right Reserved</p>
-            </div>
-        </div>
-
-    </footer>
-<script src="app.js"></script>
-</body>
-</html>
+    <script src="../app/home.js"></script>
+<% include partials/footer%>

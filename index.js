@@ -4,12 +4,15 @@ const axios = require('axios')
 const PORT = process.env.PORT||3000
 let apikey=""
 
+const comment=[
+    {movie:"335983",user:"firstUser" ,message:"this is a good movie",}
+]
+
 try {
     apikey = require("./code")
 } catch (error) {
     apikey = process.env.APIKEY
 }
-
 
 function apicall(url,res){
     return axios.get(url)
@@ -29,9 +32,16 @@ app.use(express.static('public'))
 app.set("view engine", "ejs")
 
 app.get("/", function(req, res){
-    res.render("home");
+    res.render("landing");
 });
-
+app.get("/login/:username", function(req, res){
+    const username = req.params.username
+    res.render("home", {LoginUser:{username}})
+})
+app.get("/login", function(req, res){
+    res.render("login")
+})
+//apiCall
 app.get("/recentMovie/:page", function(req,res){
     const page = req.params.page
     const url =`https://api.themoviedb.org/3/movie/now_playing?api_key=${apikey}&language=en-US&page=${page}`

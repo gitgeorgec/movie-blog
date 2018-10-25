@@ -290,6 +290,9 @@ a {
     transform: scale(0,0);
     opacity:0;
 }
+
+
+
 @keyframes fadein {
     0%{
         opacity: 0;
@@ -315,6 +318,73 @@ hr {
 }
 .content__card__text_toggle:checked +.content__card__text::before {
     content: "click to read less"
+}
+/* login page css */
+.login {
+    width: 70%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.login__form {
+    width: 100%;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.login__form__item {
+
+}
+
+.login__form__button {
+    width: 5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px;
+}
+
+.collection {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.collection__item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    top:20px
+}
+
+.collection__content {
+    position: absolute;
+    width: 100%;
+    top:40px;
+    left:0px;
+    display: flex;
+    align-items: center;
+
+}
+
+.collection__content__search {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.collection__title:hover{
+    color: white;
 }
 
 @media screen and (min-width:401px){
