@@ -1,7 +1,6 @@
 const searchForm =  document.querySelectorAll(".search")
 const searchBtn =  document.querySelectorAll(".search__button")
 const content = document.querySelector(".content")
-const jumbo = document.querySelector(".jumbotron")
 const navbar = document.querySelector(".navbar")
 const contentTitle = document.querySelector(".content__title")
 const show = document.querySelector(".show")
@@ -19,7 +18,7 @@ function createContetCard(data){
     movieCard.id = data.id
     movieCard.innerHTML=`
     <div class="placeholder" >
-        <img src="https://image.tmdb.org/t/p/w300/${data.poster_path}" alt="no pic" class="content__card__img">
+        <img src="https://image.tmdb.org/t/p/w200/${data.poster_path}" alt="no pic" class="content__card__img">
     </div>
     <h3 class="content__card__title">${data.original_title}</h3>
     <label>
@@ -111,8 +110,6 @@ function debounce(func, wait=50, immediate = true){
         if(callNow) func.apply(this, args)
     }
 }
-
-
 
 function handleMoreInfo(){
     const id = this.parentElement.id

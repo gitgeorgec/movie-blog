@@ -5,3 +5,4 @@
 * 點海報或片名可以看到預告片(youtube)
 * add backend
 * add login page
+* add post page

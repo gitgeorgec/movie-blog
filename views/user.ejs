@@ -1,0 +1,69 @@
+<% include partials/header %>
+    <main>
+        <div class="content">
+            <div class="content__title">
+                <p>Welcome <%= LoginUser.username %></p>
+                <div >
+                    <% if(LoginUser.img){ %>
+                        <img src="<%= LoginUser.img%>" alt="nopic"/>
+                    <% }else{ %>
+                        <i class="fas fa-user" ></i>
+                    <% } %>
+                </div>
+                <hr>
+            </div>
+            <div class="collection">
+                <div class="collection__item">
+                    <div class="collection__title">recent article</div>
+                    <div class="collection__content">
+                        <div class="commit">
+                            <div class="commit__title">Movie1</div>
+                            <div class="commit_img">
+                                <img src="" alt="nopic">
+                            </div>
+                            <div class="commit__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ipsa ratione quis autem cumque sunt sequi, pariatur nesciunt doloribus impedit, adipisci placeat! Sunt eum temporibus fugit explicabo placeat sint reiciendis!</div>
+                        </div>
+                        <div class="commit">
+                            <div class="commit__title">Movie2</div>
+                            <div class="commit_img">
+                                <img src="" alt="nopic">
+                            </div>
+                            <div class="commit__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ipsa ratione quis autem cumque sunt sequi, pariatur nesciunt doloribus impedit, adipisci placeat! Sunt eum temporibus fugit explicabo placeat sint reiciendis!</div>
+                        </div>
+                        <div class="commit">
+                            <div class="commit__title">Movie3</div>
+                            <div class="commit_img">
+                                <img src="" alt="nopic">
+                            </div>
+                            <div class="commit__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ipsa ratione quis autem cumque sunt sequi, pariatur nesciunt doloribus impedit, adipisci placeat! Sunt eum temporibus fugit explicabo placeat sint reiciendis!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="collection__item">
+                    <div class="collection__title">my friends</div>
+                    <div class="collection__content hide">
+                        <div class="friend">
+                            <div class="friend__name">Tom</div>
+                            <div class="friend_img">
+                                <img src="" alt="nopic">
+                            </div>
+                        </div>
+                        <div class="friend">
+                            <div class="friend__name">Jimmy</div>
+                            <div class="friend_img">
+                                <img src="" alt="nopic">
+                            </div>
+                        </div>
+                        <div class="friend">
+                            <div class="friend__name">Sara</div>
+                            <div class="friend_img">
+                                <img src="" alt="nopic">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../app/home.js"></script>
+<% include partials/footer%>

@@ -156,6 +156,8 @@ body {
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
+    min-height: 40vh;
+    padding-bottom: 20px;
 }
 
 .content__title {
@@ -168,7 +170,7 @@ body {
 }
 
 .content__card {
-    width: 360px;
+    width: 220px;
     margin: 20px;
     box-sizing: border-box;
     background: white;
@@ -183,7 +185,7 @@ body {
 }
 
 .content__card__img {
-    max-width: 360px;
+    max-width: 220px;
     height: auto;
     border: 1px solid white;
     box-sizing: border-box;
@@ -193,10 +195,15 @@ body {
 }
 
 .placeholder {
-    height: 454px;
+    height: 300px;
     margin: 0;
     background: url("../img/denise-jans-559588-unsplash.jpg") no-repeat center;
     cursor: pointer;
+}
+
+.small {
+    height: auto;
+    width: 200px;
 }
 
 .content__card__title {
@@ -320,14 +327,6 @@ hr {
     content: "click to read less"
 }
 /* login page css */
-.login {
-    width: 70%;
-    box-sizing: border-box;
-    margin: 0 auto;
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-}
 
 .login__form {
     width: 100%;
