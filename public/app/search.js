@@ -114,14 +114,20 @@ function debounce(func, wait=50, immediate = true){
 function handleMoreInfo(){
     const id = this.parentElement.id
     show.classList.remove("hide")
-    showContent.innerHTML=""   
-    showContent.innerHTML=""   
+    showContent.innerHTML=`
+    <form class="post" method="POST" action="new/${id}">
+        <input type="text" name="img" id="" valud="">
+        <button type="submit" style="text-align: end">post</button>
+    </form>
+    `
     const url =`/getVideo/${id}`
     fetch(url)
     .then(res=>res.json())
     .then(res=>{
         if(res.results.length===0){
-            showContent.innerHTML = "NOT FOUND VIDEO "
+            const notFound = document.createElement("p")
+            notFound.innerText = "NOT FOUND VIDEO "
+            showContent.appendChild = notFound
         }
         res.results.forEach(video=>{
             const videoCard = document.createElement("iframe")

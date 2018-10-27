@@ -1,0 +1,31 @@
+<% include partials/header %>
+<style>
+    .select{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        font-size: 2rem;
+        width: 100%;
+        padding-top: 4.5rem;
+        text-align: center;
+    }
+</style>
+
+<main>
+    <div class="show hide">
+        <span class="close">X</span>
+        <div class="show__content"></div>
+    </div>
+    <div class="select">
+        <p>select a movie to start a movie review</p>
+        <form action="" method="GET" class="search">
+            <input class="search__input" type="text" name="movie" placeholder="movie name" autocomplete="off" required>
+            <button type="submit" class="search__button">search</button>
+        </form> 
+    </div>
+    <div class="content__title">RECENT MOVIE<hr></div>
+    <div class="content"></div>
+</main>
+<% include partials/footer %>
+<script src="../app/search.js"></script>

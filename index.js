@@ -52,8 +52,12 @@ app.get("/home", function(req, res){
     res.render("home",{comments});
 })
 
-app.get("/new", (req, res)=>{
+app.post("/new/:id", (req, res)=>{
+    const Id = req.params.id
     res.render("new")
+})
+app.get("/search", (req, res)=>{
+    res.render("search")
 })
 
 app.get("/post/:commentId",function(req,res){

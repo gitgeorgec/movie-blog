@@ -1,31 +1,66 @@
 <% include partials/header %>
 <style>
-    .new{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .post {
+        background: rgba(0, 0, 0, 0.5);
         color: white;
-        font-size: 2rem;
+        font-size: 20px;
+        min-height: 90vh;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .post__head {
         width: 100%;
-        padding-top: 4.5rem;
-        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        background: rgba(0, 0, 0, 0.783);
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    .post__title {
+        width: 70%;
+    }
+
+    .post__message {
+        padding: 15px;
+        min-height: 80vh;
+    }
+
+    textarea[name=postMessage] {
+        width: 100%;
+        min-height: 100vh;
+        font-size: 20px;
+        color: white;
+        background: rgba(0, 0, 0, 0.406)
+    }
+
+    input[name=postTitle]{
+        width: 100%;
+        font-size: 24px;
+        color: white;
+        border: 0;
+        background: rgba(155, 155, 155, 0.406)
     }
 </style>
-
 <main>
-    <div class="show hide">
-        <span class="close">X</span>
-        <div class="show__content"></div>
-    </div>
-    <div class="new">
-        <p>select a movie to start a movie review</p>
-        <form action="" method="GET" class="search">
-            <input class="search__input" type="text" name="movie" placeholder="movie name" autocomplete="off" required>
-            <button type="submit" class="search__button">search</button>
-        </form> 
-    </div>
-    <div class="content__title">RECENT MOVIE<hr></div>
-    <div class="content"></div>
+    <div class="content__title">POST<hr></div>
+    <form class="post" method="POST" action="/post">
+        <div class="post__head">
+            <div class="post__title">
+                <input type="text" name="postTitle" id="" placeholder="Place title here">
+            </div>
+            <div class="post__user">
+                <input type="text" name="postUser" id="" value="userName" hidden>
+                userName
+            </div>
+        </div>
+        <div class="post__message">
+            <textarea name="postMessage" id="" cols="30" rows="10" placeholder="add your movie review here..."></textarea>
+                <button type="submit" style="text-align: end">post</button>
+        </div>
+    </form>
 </main>
+
+
 <% include partials/footer %>
-<script src="../app/new.js"></script>
