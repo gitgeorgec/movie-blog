@@ -16,14 +16,17 @@ function createContetCard(data){
     movieCard.classList.add("content__card")
     movieCard.classList.add("hide")
     movieCard.id = data.id
+    movieCard.dataset.img =`https://image.tmdb.org/t/p/w200/${data.poster_path}`
+    movieCard.dataset.title = data.original_title
+    movieCard.dataset.overview = data.overview
     movieCard.innerHTML=`
     <div class="placeholder" >
-        <img src="https://image.tmdb.org/t/p/w200/${data.poster_path}" alt="no pic" class="content__card__img">
+        <img src=${movieCard.dataset.img} alt="no pic" class="content__card__img">
     </div>
-    <h3 class="content__card__title">${data.original_title}</h3>
+    <h3 class="content__card__title">${ movieCard.dataset.title}</h3>
     <label>
         <input type="checkbox" class="content__card__text_toggle" hidden>
-        <p class="content__card__text">${data.overview}</p>
+        <p class="content__card__text">${movieCard.dataset.overview}</p>
     </label>
     `
     content.appendChild(movieCard)
@@ -112,13 +115,24 @@ function debounce(func, wait=50, immediate = true){
 }
 
 function handleMoreInfo(){
-    const id = this.parentElement.id
+    const movieCard =this.parentElement
+    const id = movieCard.id
+    const imgUrl = movieCard.dataset.img
+    const title = movieCard.dataset.title
+    const overview = movieCard.dataset.overview
     show.classList.remove("hide")
     showContent.innerHTML=`
     <form class="post" method="POST" action="new/${id}">
-        <input type="text" name="img" id="" valud="">
-        <button type="submit" style="text-align: end">post</button>
+        <h4>${title}</h4>
+        <p style="text-align:left">
+            <img src=${imgUrl} style="float:left">
+            ${overview}
+        </p>
+        <input type="text" name="img" value="${imgUrl}" hidden>
+        <input type="text" name="title" value="${title}" hidden>
+        <button type="submit" style="text-align: end">write a new movie review</button>
     </form>
+    <hr style="width:100%; height:3px">
     `
     const url =`/getVideo/${id}`
     fetch(url)
@@ -129,13 +143,16 @@ function handleMoreInfo(){
             notFound.innerText = "NOT FOUND VIDEO "
             showContent.appendChild = notFound
         }
+        const movieTrailer =document.createElement("div")
+        movieTrailer.classList.add("trailer")
         res.results.forEach(video=>{
             const videoCard = document.createElement("iframe")
             videoCard.classList.add("show__content__card")
             videoUrl = `https://www.youtube.com/embed/${video.key}`
             videoCard.src = videoUrl
-            showContent.appendChild(videoCard)
+            movieTrailer.appendChild(videoCard)
         })
+        showContent.appendChild(movieTrailer)
     })
 }
 
