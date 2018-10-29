@@ -1,23 +1,4 @@
 <% include partials/header %>
-    <style>
-        .content__list{
-            width:100%;
-            background:rgba(152, 151, 151, 0.577);
-            padding: 0
-        }
-        .content__list__item {
-            font-size: 24px;
-            list-style: none;
-        }
-        
-        .content__list:nth-child(odd) {
-            background: rgba(89, 87, 87, 0.577);
-        }
-
-        .content__list__item:hover {
-            color: blue;
-        }
-    </style>
     <main>
         <div class="show hide">
             <span class="close">X</span>
@@ -31,13 +12,16 @@
         </div>
         <div class="content__title">RECENT POST<hr></div>
         <div class="content">
-            <% for(let i=0; i<comments.length; i++){%>
-            <div class="content__list" data-movieId="<%= comments[i].movie%>">
+            <% for(let i=0; i<5; i++){%>
+            <div class="content__list" data-movieId="<%= allposts[i].movieId%>">
                 <div class="content__list__item">
-                    <p style="margin:0"><a href="/post/<%=comments[i]._id %>"><img src="<%= comments[i].img%>" alt="" height="90px" width="60px" style="float:left;"><%= comments[i].title%></a></p>
+                    <p style="margin:0"><a href="/posts/<%=allposts[i]._id %>"><img src="<%= allposts[i].imgUrl%>" alt="" height="90px" width="60px" style="float:left;"><%= allposts[i].title%></a></p>
                 </div>
             </div>
             <% }%>
+            <div style="text-align:center" >
+                <a href="posts" class="search__button">find more</a> 
+            </div>
         </div>
     </main>
 

@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 <style>
     .post {
         background: rgba(0, 0, 0, 0.5);
@@ -27,7 +27,7 @@
         min-height: 80vh;
     }
 
-    textarea[name=postMessage] {
+    textarea[name=text] {
         width: 100%;
         min-height: 100vh;
         font-size: 20px;
@@ -35,7 +35,7 @@
         background: rgba(0, 0, 0, 0.406)
     }
 
-    input[name=postTitle]{
+    input[name=Title]{
         width: 100%;
         font-size: 24px;
         color: white;
@@ -45,22 +45,27 @@
 </style>
 <main>
     <div class="content__title">POST<hr></div>
-    <form class="post" method="POST" action="/post">
+    <form action="/posts" method="POST" class="post"  >
+        <h3><%= movieTitle%></h3>
+        <img src="<%= imgUrl%>">
+        <input type="text" name="movieId" value="<%= movieId%>" hidden>
+        <input type="text" name="movieTitle" value="<%= movieTitle%>" hidden>
+        <input type="text" name="imgUrl" value="<%= imgUrl%>" hidden>
         <div class="post__head">
             <div class="post__title">
-                <input type="text" name="postTitle" id="" placeholder="Place title here">
+                <input type="text" name="Title" id="" placeholder="Place title here" autocomplete="off">
             </div>
             <div class="post__user">
-                <input type="text" name="postUser" id="" value="userName" hidden>
+                <input type="text" name="author" id="" value="userName" hidden>
                 userName
             </div>
         </div>
         <div class="post__message">
-            <textarea name="postMessage" id="" cols="30" rows="10" placeholder="add your movie review here..."></textarea>
+            <textarea name="text" id="" cols="30" rows="10" placeholder="add your movie review here..." autocomplete="off"></textarea>
                 <button type="submit" style="text-align: end">post</button>
         </div>
     </form>
 </main>
 
 
-<% include partials/footer %>
+<% include ../partials/footer %>

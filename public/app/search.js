@@ -93,7 +93,7 @@ function handleScoll(fn){
     totalY = document.body.scrollHeight
     windowY = window.scrollY+window.innerHeight   
     if(page===10)return
-    if(windowY>totalY-500&&totalY>window.innerHeight){
+    if(windowY>totalY-800&&totalY>window.innerHeight){
         page++
         fn()
     }
@@ -116,43 +116,47 @@ function debounce(func, wait=50, immediate = true){
 
 function handleMoreInfo(){
     const movieCard =this.parentElement
-    const id = movieCard.id
+    const movieId = movieCard.id
     const imgUrl = movieCard.dataset.img
     const title = movieCard.dataset.title
     const overview = movieCard.dataset.overview
     show.classList.remove("hide")
     showContent.innerHTML=`
-    <form class="post" method="POST" action="new/${id}">
+    <form class="post" method="POST" action="posts/new">
         <h4>${title}</h4>
         <p style="text-align:left">
             <img src=${imgUrl} style="float:left">
             ${overview}
         </p>
+        <input type="text" name="movieId" value="${movieId}" hidden>
         <input type="text" name="img" value="${imgUrl}" hidden>
         <input type="text" name="title" value="${title}" hidden>
         <button type="submit" style="text-align: end">write a new movie review</button>
     </form>
     <hr style="width:100%; height:3px">
     `
-    const url =`/getVideo/${id}`
+    const url =`/getVideo/${movieId}`
     fetch(url)
     .then(res=>res.json())
     .then(res=>{
+        console.log(res.results)
         if(res.results.length===0){
             const notFound = document.createElement("p")
             notFound.innerText = "NOT FOUND VIDEO "
-            showContent.appendChild = notFound
+            showContent.appendChild(notFound)
+        } else{
+            const movieTrailer =document.createElement("div")
+            movieTrailer.classList.add("trailer")
+            res.results.forEach(video=>{
+                const videoCard = document.createElement("iframe")
+                videoCard.classList.add("show__content__card")
+                videoUrl = `https://www.youtube.com/embed/${video.key}`
+                videoCard.src = videoUrl
+                movieTrailer.appendChild(videoCard)
+                console.log(movieTrailer)
+            })
+            showContent.appendChild(movieTrailer)
         }
-        const movieTrailer =document.createElement("div")
-        movieTrailer.classList.add("trailer")
-        res.results.forEach(video=>{
-            const videoCard = document.createElement("iframe")
-            videoCard.classList.add("show__content__card")
-            videoUrl = `https://www.youtube.com/embed/${video.key}`
-            videoCard.src = videoUrl
-            movieTrailer.appendChild(videoCard)
-        })
-        showContent.appendChild(movieTrailer)
     })
 }
 

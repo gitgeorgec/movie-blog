@@ -241,6 +241,24 @@ body {
     opacity: 1;
   }
 
+.content__list{
+    width:100%;
+    background:rgba(152, 151, 151, 0.577);
+    padding: 0
+}
+.content__list__item {
+    font-size: 24px;
+    list-style: none;
+}
+
+.content__list:nth-child(odd) {
+    background: rgba(89, 87, 87, 0.577);
+}
+
+.content__list__item:hover {
+    color: blue;
+}
+
 .footer {
     background: rgb(131, 126, 126);
     width: 100vw;

@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 <style>
     .post {
         background: rgba(0, 0, 0, 0.5);
@@ -23,25 +23,25 @@
         min-height: 80vh;
     }
 
-    .commits {
+    .comments {
         background: rgba(0, 102, 255, 0.488);
         box-sizing: border-box;
         padding: 20px;
         min-height: 10vh;
     }
-    .commit {
+    .comment {
         margin: 5px;
     }
 
-    .commits__form {
+    .comments__form {
         width: 80%;
     }
     
-    .commits__head {
+    .comments__head {
         display: flex;
         justify-content: space-between    
     }
-    textarea[name=commit_message] {
+    textarea[name=comment_message] {
         width: 100%;
         min-height: 2rem;
     }
@@ -50,11 +50,11 @@
     <div class="show hide">
         <span class="close">X</span>
         <div class="show__content">
-            <div class="content__title">leave commit<hr></div>
-            <div class="commits__form">
-                <form action="/commit/:post">
-                    <textarea name="commit_message" id="" cols="30" rows="10"></textarea>
-                    <button type="submit">leave commit</button>
+            <div class="content__title">leave comment<hr></div>
+            <div class="comments__form">
+                <form action="/comment/:post">
+                    <textarea name="comment_message" id="" cols="30" rows="10"></textarea>
+                    <button type="submit">leave comment</button>
                 </form>
             </div>
         </div>
@@ -66,24 +66,24 @@
                 <%= post.title %>
             </div>
             <div class="post__user">
-                post by <%= post.user%>
+                post by <%= post.author%>
             </div>
         </div>
         <div class="post__message">
-            <%= post.message %>
+            <%= post.text %>
         </div>
-        <div class="commits">
-            <div class="commits__head">
-                <div class="commits__title">回覆</div>
-                <button>Leave commit</button>
+        <div class="comments">
+            <div class="comments__head">
+                <div class="comments__title">回覆</div>
+                <button>Leave comment</button>
             </div>
-            <% post.commits.forEach(commit=>{ %>
-            <div class="commit">
-                <div class="commit__user">
-                    <%= commit.user %> :
+            <% post.comments.forEach(comment=>{ %>
+            <div class="comment">
+                <div class="comment__user">
+                    <%= comment.user %> :
                 </div>
-                <div class="commit__message">
-                    <%= commit.message %>
+                <div class="comment__message">
+                    <%= comment.message %>
                 </div>
             </div>
             <% }) %>
@@ -92,4 +92,4 @@
 </main>
 
 
-<% include partials/footer %>
+<% include ../partials/footer %>
