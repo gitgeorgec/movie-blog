@@ -3,22 +3,49 @@ const mongoose = require("mongoose")
 const bodyParser  = require("body-parser")
 const app = express()
 const axios = require('axios')
+const passport = require("passport")
+const LocalStrategy = require("passport-local")
 const PORT = process.env.PORT||3000
 const indexRoutes = require("./routes/index")
 const postRoutes = require("./routes/posts")
+const User = require("./models/user")
+
 let apikey=""
 try {
     const Code = require("./code")
     apikey = Code.apikey
     mongoose.connect(Code.dbUrl,{ useNewUrlParser: true })
+    //set session
+    // app.use(require("express-session")({
+    //     secret:Code.salt,
+    //     resave:false,
+    //     saveUninitialized: false
+    // }));
 } catch (error) {
     apikey = process.env.APIKEY
     mongoose.connect(process.env.DATABASEURL)
+
 }
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'))
 app.set("view engine", "ejs")
+app.use(require("express-session")({
+    secret:"process.env.salt",
+    resave:false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session()); 
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user
+    next()
+})
 
 app.use(indexRoutes)
 app.use("/posts", postRoutes)
@@ -26,13 +53,6 @@ app.use("/posts", postRoutes)
 app.get("/search", (req, res)=>{
     res.render("search")
 })
-
-app.get("/login/:username", function(req, res){
-    const username = req.params.username
-    res.render("user", {LoginUser:{username}})
-})
-
-
 //apiCall
 function apicall(url,res){
     return axios.get(url)

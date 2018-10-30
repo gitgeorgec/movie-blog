@@ -1,0 +1,63 @@
+<% include partials/header %>
+    <main>
+        <div class="content">
+            <div class="content__title">
+                <i class="fas fa-user" ></i>
+                SignUp
+                <hr>
+            </div>       
+            <div class="login">
+                <form action="/signup" class="login__form" method="POST">
+                    <div class="login__form__item">
+                        <p>username</p>
+                        <input type="text" name="username" id="" autocomplete="off" required>
+                    </div>
+                    <div class="login__form__item">
+                        <p>password</p>
+                        <input type="password" name="password" autocomplete="off" required>
+                        <p>comfirm password</p>
+                        <input type="password" name="comfirmed" autocomplete="off" required>
+                    </div>
+                    <button class="login__form__button">SingUp</button>
+                    <h4 class="err_message" style="color:red"></h4>
+                </form>
+            </div>
+            <div style="height:100vh"></div>
+        </div>
+    </main>
+<% include partials/footer%>
+<script>
+const username = document.querySelector("input[name=username]")
+const password = document.querySelector("input[name=password]")
+const comfirmed = document.querySelector("input[name=comfirmed]")
+const errMessage = document.querySelector(".err_message")
+const submitBtn = document.querySelector(".login__form__button")
+let response= ""
+
+submitBtn.addEventListener("click",(e)=>{
+    e.preventDefault()
+    fetch(`/signup/${username.value}`)
+    .then(res=>res.text())
+    .then(text=>{
+        //check username
+        if(text === "not found"){
+            //check password
+            if(password.value !== comfirmed.value || password.value ==""){
+                console.log("not comfirm")
+                errMessage.innerText = "please comfirm your password"
+            }else {
+                document.querySelector("form").submit()
+                return 
+            }
+        }else{
+            errMessage.innerText = "username has been used"
+        }
+    })
+    .then(()=>{
+        setTimeout(()=>{
+            errMessage.innerText=""
+        },3000)
+    })
+})
+
+</script>

@@ -12,11 +12,15 @@
     <header>
         <nav class="navbar">
             <div class="navbr__brand">
-                <a href="/">MOVIE DB</a>
+                <a href="/index">MOVIE DB</a>
             </div>
             <ul class="navbar__list">
-                <li class="navbar__list__item"><a href="/login/">logIn</a></li>
-                <li class="navbar__list__item"><a href="">signUp</a></li>
+                <% if(!currentUser){ %>
+                <li class="navbar__list__item"><a href="/login">logIn</a></li>
+                <li class="navbar__list__item"><a href="/signup">signUp</a></li>
+                <% } else{%>
+                <li class="navbar__list__item"><a href="/logout">logout</a></li>
+                <% }%>
             </ul>
         </nav>
     </header>

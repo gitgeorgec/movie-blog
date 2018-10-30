@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/post");
+var middleware = require("../middleware")
 
 router.get("/", function(req, res){
     Post.find({}, function(err, allPosts){
@@ -12,7 +13,7 @@ router.get("/", function(req, res){
     })
 })
 
-router.post("/", function(req,res){
+router.post("/",middleware.isLoggedIn, function(req,res){
     const movieId = req.body.movieId
     const movieTitle = req.body.movieTitle
     const imgUrl = req.body.imgUrl
@@ -26,18 +27,16 @@ router.post("/", function(req,res){
         title:title, 
         author:author, 
         text:text}
-    console.log(req.body)
     Post.create(newPost, function(err, newlyCreated){
         if(err){
             console.log(err)
         }else {
-            console.log(newlyCreated)
             res.redirect("posts/")
         }
     })
 })
 
-router.post("/new", function(req, res){
+router.post("/new",middleware.isLoggedIn, function(req, res){
     const movieId = req.body.movieId
     const movieTitle = req.body.title
     const imgUrl = req.body.img
@@ -50,7 +49,6 @@ router.get("/:id", function(req,res){
         if(err){
             console.log(err)
         }else{
-            console.log(foundPost)
             res.render("posts/show", {post:foundPost})  
         }
     })  
