@@ -2,11 +2,16 @@
 <main>
     <div class="content__title">RECENT POST<hr></div>
     <div class="content">
-        <% for(let i=0; i<allPosts.length; i++){%>
+        <% for(let i=0; i<allPosts.length; i++){ %>
         <div class="content__list" data-movieId="<%= allPosts[i].movieId%>">
             <div class="content__list__item">
                 <p style="margin:0"><a href="/posts/<%=allPosts[i]._id %>"><img src="<%= allPosts[i].imgUrl%>" alt="" height="90px" width="60px" style="float:left;"><%= allPosts[i].title%></a></p>
             </div>
+            <%if(allPosts[i].author.id.equals(currentUser._id)){%>
+            <div>
+                <button>delete</button>
+            </div>
+            <%}%>
         </div>
         <% }%>
     </div>

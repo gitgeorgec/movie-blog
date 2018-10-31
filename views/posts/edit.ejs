@@ -44,23 +44,20 @@
     }
 </style>
 <main>
-    <div class="content__title">POST<hr></div>
-    <form action="/posts" method="POST" class="post"  >
-        <h3><%= movieTitle%></h3>
-        <img src="<%= imgUrl%>">
-        <input type="text" name="movieId" value="<%= movieId%>" hidden>
-        <input type="text" name="movieTitle" value="<%= movieTitle%>" hidden>
-        <input type="text" name="imgUrl" value="<%= imgUrl%>" hidden>
+    <div class="content__title">EDIT <%=Post.title%><hr></div>
+    <form action="/posts/<%= Post._id%>?_method=PUT" method="POST" class="post"  >
+        <h3><%= Post.movieTitle%></h3>
+        <img src="<%= Post.imgUrl%>">
         <div class="post__head">
             <div class="post__title">
-                <input type="text" name="Title" id="" placeholder="Place title here" autocomplete="off">
+                <input type="text" name="Title" id="" placeholder="Place title here" autocomplete="off" value="<%=Post.title%>">
             </div>
             <div class="post__user">
-                author: <%= currentUser.username%>
+                author: <%= Post.author.username%>
             </div>
         </div>
         <div class="post__message">
-            <textarea name="text" id="" cols="30" rows="10" placeholder="add your movie review here..." autocomplete="off"></textarea>
+            <textarea name="text" id="" cols="30" rows="10" placeholder="add your movie review here..." autocomplete="off"><%= Post.text%></textarea>
                 <button type="submit" style="text-align: end">post</button>
         </div>
     </form>

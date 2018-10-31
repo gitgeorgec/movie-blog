@@ -166,8 +166,8 @@ function closeShow(){
 }
 
 searchBtn.forEach(btn=>{
-    btn.addEventListener("click", handleSearch)
     btn.addEventListener("click", ()=>{page=1})
+    btn.addEventListener("click", handleSearch)
     btn.addEventListener("click", ()=>{
         window.removeEventListener("scroll", dbRecentMovie)
         window.removeEventListener("scroll", dbSearchMovie)

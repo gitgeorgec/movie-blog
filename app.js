@@ -5,36 +5,39 @@ const app = express()
 const axios = require('axios')
 const passport = require("passport")
 const LocalStrategy = require("passport-local")
-const PORT = process.env.PORT||3000
+const methodOverride = require("method-override")
 const indexRoutes = require("./routes/index")
 const postRoutes = require("./routes/posts")
+const commentRoutes = require("./routes/comments")
 const User = require("./models/user")
 
+const PORT = process.env.PORT||3000
 let apikey=""
 try {
     const Code = require("./code")
     apikey = Code.apikey
     mongoose.connect(Code.dbUrl,{ useNewUrlParser: true })
-    //set session
-    // app.use(require("express-session")({
-    //     secret:Code.salt,
-    //     resave:false,
-    //     saveUninitialized: false
-    // }));
+    // set session
+    app.use(require("express-session")({
+        secret:Code.salt,
+        resave:false,
+        saveUninitialized: false
+    }));
 } catch (error) {
     apikey = process.env.APIKEY
     mongoose.connect(process.env.DATABASEURL)
+    app.use(require("express-session")({
+        secret:process.env.salt,
+        resave:false,
+        saveUninitialized: false
+    }));
 
 }
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static('public'))
 app.set("view engine", "ejs")
-app.use(require("express-session")({
-    secret:"process.env.salt",
-    resave:false,
-    saveUninitialized: false
-}));
+app.use(express.static('public'))
+app.use(methodOverride("_method"))
 
 app.use(passport.initialize());
 app.use(passport.session()); 
@@ -49,10 +52,13 @@ app.use(function(req, res, next){
 
 app.use(indexRoutes)
 app.use("/posts", postRoutes)
+app.use("/comments", commentRoutes)
 
 app.get("/search", (req, res)=>{
     res.render("search")
 })
+
+
 //apiCall
 function apicall(url,res){
     return axios.get(url)
@@ -77,6 +83,8 @@ app.get("/recentMovie/:page", function(req,res){
 app.get("/searchMovie/:movie/:page", function(req,res){
     const movie = req.params.movie
     const page = req.params.page
+    console.log("search "+movie)
+    console.log("search "+page)
     const url =`https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${movie}&page=${page}`
     apicall(url,res)
 })

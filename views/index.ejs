@@ -12,7 +12,7 @@
         </div>
         <div class="content__title">RECENT POST<hr></div>
         <div class="content">
-            <% for(let i=0; i<5; i++){%>
+            <% for(let i=0; i<Math.min(5,(allposts.length)); i++){%>
             <div class="content__list" data-movieId="<%= allposts[i].movieId%>">
                 <div class="content__list__item">
                     <p style="margin:0"><a href="/posts/<%=allposts[i]._id %>"><img src="<%= allposts[i].imgUrl%>" alt="" height="90px" width="60px" style="float:left;"><%= allposts[i].title%></a></p>
@@ -55,7 +55,7 @@ function recentMovie(){
     .then(res=>res.json())
     .then(res=>{
         content.innerHTML=""
-        for(let i=0; i<10; i++){
+        for(let i=0; i<3; i++){
             createContetCard(res.results[i])
         }
     })
