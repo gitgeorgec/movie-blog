@@ -123,7 +123,7 @@ function handleMoreInfo(){
     show.classList.remove("hide")
     showContent.innerHTML=`
     <h3>${title}</h3>
-    <p style="text-align:left">
+    <p style="text-align:left;  text-shadow: 3px 3px 0 black">
         <img src=${imgUrl} style="float:left; margin:0 15px">
         ${overview}
     </p>
@@ -139,6 +139,10 @@ function handleMoreInfo(){
     fetch(url)
     .then(res=>res.json())
     .then(res=>{
+        const trailer = document.createElement("h4")
+        trailer.innerText = "MOVIE TRAILER"
+        trailer.style ="width:100%"
+        showContent.appendChild(trailer)
         if(res.results.length===0){
             const notFound = document.createElement("p")
             notFound.innerText = "NOT FOUND VIDEO "
@@ -153,9 +157,6 @@ function handleMoreInfo(){
                 videoCard.src = videoUrl
                 movieTrailer.appendChild(videoCard)
             })
-            const trailer = document.createElement("h4")
-            trailer.innerText = "MOVIE TRAILER"
-            showContent.appendChild(trailer)
             showContent.appendChild(movieTrailer)
         }
     })

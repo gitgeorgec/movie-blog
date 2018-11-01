@@ -5,10 +5,6 @@ const User = require("../models/user")
 const passport = require("passport")
 
 router.get("/", function(req, res){
-    res.render("landing");
-})
-
-router.get("/index", function(req, res){
     Post.find({}, null, {sort: {time: -1}},function(err, allposts){
         if(err){
             console.log(err)
@@ -20,9 +16,6 @@ router.get("/index", function(req, res){
 
 router.get("/search", (req, res)=>{
     res.render("search")
-})
-router.get("/landing", (req, res)=>{
-    res.render("landing")
 })
 
 router.get("/signup",function(req, res){
@@ -37,7 +30,7 @@ router.post("/signup", function(req, res){
             return res.redirect("/signup")
         }
         passport.authenticate("local")(req, res, function(){
-            res.redirect("/index")
+            res.redirect("/")
         })
     })
 })
@@ -58,7 +51,7 @@ router.get("/login", function(req,res){
 
 router.post("/login", passport.authenticate("local", 
     {
-        successRedirect: "/index",
+        successRedirect: "/",
         failureRedirect: "/login"
     }),function(req,res){
 });
@@ -72,8 +65,9 @@ router.get("/login/:username", function(req, res){
 router.get("/logout", function(req,res){
     req.logout();
     // req.flash("success", "Logged you out")
-    res.redirect("/index");
+    res.redirect("/");
 });
+
 router.get("/user", (req, res)=>{
     Post.find({"author.username":req.user.username},(err,foundPosts)=>{
         if(err){
@@ -81,6 +75,17 @@ router.get("/user", (req, res)=>{
         }else {
             res.render("user", {post:foundPosts})
         }
+    })
+})
+
+router.put("/user", (req, res)=>{
+    console.log(req.body.newPassword)
+    User.findByIdAndUpdate(req.user._id).then(function(foundUser){
+        foundUser.setPassword(req.body.newPassword, function(){
+            console.log("success")
+            foundUser.save()
+            res.redirect("/logout")
+        })
     })
 })
 module.exports = router;

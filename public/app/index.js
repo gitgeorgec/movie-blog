@@ -2,6 +2,8 @@ const show = document.querySelector(".show")
 const showContent = document.querySelector(".show__content")
 const showCloseBtn = show.querySelector(".close")
 const content = document.querySelector("#content1")
+const searchBtn = document.querySelector(".search__button")
+const firstPage = document.querySelector("#page")
 
 function createContetCard(data){
     const movieCard = document.createElement("div")
@@ -49,6 +51,9 @@ function handleMoreInfo(){
     fetch(url)
     .then(res=>res.json())
     .then(res=>{
+        const trailer = document.createElement("h4")
+        trailer.innerText = "MOVIE TRAILER"
+        trailer.style ="width:100%"
         if(res.results.length===0){
             const notFound = document.createElement("p")
             notFound.innerText = "NOT FOUND VIDEO "
@@ -56,6 +61,7 @@ function handleMoreInfo(){
         } else{
             const movieTrailer =document.createElement("div")
             movieTrailer.classList.add("trailer")
+            showContent.appendChild(trailer)
             res.results.forEach(video=>{
                 const videoCard = document.createElement("iframe")
                 videoCard.classList.add("show__content__card")
@@ -63,9 +69,6 @@ function handleMoreInfo(){
                 videoCard.src = videoUrl
                 movieTrailer.appendChild(videoCard)
             })
-            const trailer = document.createElement("h4")
-            trailer.innerText = "MOVIE TRAILER"
-            showContent.appendChild(trailer)
             showContent.appendChild(movieTrailer)
         }
     })
@@ -77,7 +80,7 @@ function recentMovie(){
     .then(res=>res.json())
     .then(res=>{
         content.innerHTML=""
-        for(let i=0; i<4; i++){
+        for(let i=0; i<10; i++){
             createContetCard(res.results[i])
         }
     })
@@ -89,3 +92,15 @@ function closeShow(){
 }
 showCloseBtn.addEventListener("click",closeShow)
 recentMovie()
+
+function ScrollNextPage(e){
+    e.preventDefault()
+    const presentTop = window.scrollY;
+    const screenHeight = window.innerHeight;
+    const next = presentTop+screenHeight
+    window.scrollTo({
+            top: firstPage.offsetTop,
+            behavior: "smooth"
+        })
+}
+searchBtn.addEventListener("click", ScrollNextPage)

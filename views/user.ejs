@@ -26,7 +26,9 @@
                             <div class="content__card__title"><%=post[i].title%></div>
                             rate : <%= post[i].rate%>
                             <div class="placeholder">
-                                <img class="content__card__img" src="<%=post[i].imgUrl%>" alt="nopic">
+                                <a href="/posts/<%= post[i]._id%>">
+                                    <img class="content__card__img" src="<%=post[i].imgUrl%>" alt="nopic">
+                                </a>
                             </div>
                         </div>
                     <% }}%>
@@ -34,38 +36,17 @@
                 </div>
                 <div id="friend" class="collection__item none">
                     <div class="collection__content">
-                        <div class="friend">
-                            <div class="friend__name">Tom</div>
-                            <div class="friend_img">
-                                <img src="" alt="nopic">
-                            </div>
-                        </div>
-                        <div class="friend">
-                            <div class="friend__name">Jimmy</div>
-                            <div class="friend_img">
-                                <img src="" alt="nopic">
-                            </div>
-                        </div>
-                        <div class="friend">
-                            <div class="friend__name">Sara</div>
-                            <div class="friend_img">
-                                <img src="" alt="nopic">
-                            </div>
-                        </div>
+                        HERE WILL SHOW SOME FRIENDS
                     </div>
                 </div>
                 <div id="password" class="collection__item none">
                     <div class="collection__content">
-                        <form action="">
-                            <div>
-                                    old password
-                                <input type="text">
-                            </div>
+                        <form action="/user?_method=PUT" method="POST">
                             <div>
                                 new password
-                                <input type="text">
+                                <input name="newPassword" type="password">
+                                <button class="btn submit_btn">submit</button>
                             </div>
-                            <button>submit</button>
                         </form>
                     </div>
                 </div>            
