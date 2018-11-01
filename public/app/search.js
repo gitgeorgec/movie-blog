@@ -122,24 +122,23 @@ function handleMoreInfo(){
     const overview = movieCard.dataset.overview
     show.classList.remove("hide")
     showContent.innerHTML=`
+    <h3>${title}</h3>
+    <p style="text-align:left">
+        <img src=${imgUrl} style="float:left; margin:0 15px">
+        ${overview}
+    </p>
     <form class="post" method="POST" action="posts/new">
-        <h4>${title}</h4>
-        <p style="text-align:left">
-            <img src=${imgUrl} style="float:left">
-            ${overview}
-        </p>
         <input type="text" name="movieId" value="${movieId}" hidden>
         <input type="text" name="img" value="${imgUrl}" hidden>
         <input type="text" name="title" value="${title}" hidden>
-        <button type="submit" style="text-align: end">write a new movie review</button>
+        <button type="submit" class="submit_btn btn" style="font-size:2rem">start posting</button>
     </form>
-    <hr style="width:100%; height:3px">
+    <hr style="width:95%; height:3px; background:white">
     `
     const url =`/getVideo/${movieId}`
     fetch(url)
     .then(res=>res.json())
     .then(res=>{
-        console.log(res.results)
         if(res.results.length===0){
             const notFound = document.createElement("p")
             notFound.innerText = "NOT FOUND VIDEO "
@@ -153,8 +152,10 @@ function handleMoreInfo(){
                 videoUrl = `https://www.youtube.com/embed/${video.key}`
                 videoCard.src = videoUrl
                 movieTrailer.appendChild(videoCard)
-                console.log(movieTrailer)
             })
+            const trailer = document.createElement("h4")
+            trailer.innerText = "MOVIE TRAILER"
+            showContent.appendChild(trailer)
             showContent.appendChild(movieTrailer)
         }
     })

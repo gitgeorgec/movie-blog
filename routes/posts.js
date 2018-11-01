@@ -4,7 +4,7 @@ const Post = require("../models/post");
 var middleware = require("../middleware")
 
 router.get("/", function(req, res){
-    Post.find({}, function(err, allPosts){
+    Post.find({}, null, {sort: {time: -1}},function(err, allPosts){
         if(err){
             console.log(err)
         }else {
@@ -19,6 +19,9 @@ router.post("/",middleware.isLoggedIn, function(req,res){
     const imgUrl = req.body.imgUrl
     const title = req.body.Title
     const text = req.body.text
+    const watchPlace = req.body.watchPlace
+    const watchTime = req.body.watchTime
+    const rate = req.body.rate
     const time = new Date
     const author = {
         id: req.user._id,
@@ -31,7 +34,11 @@ router.post("/",middleware.isLoggedIn, function(req,res){
         title:title, 
         time:time,
         author:author, 
-        text:text}
+        text:text,
+        watchPlace:watchPlace,
+        watchTime:watchTime,
+        rate:rate
+    }
     Post.create(newPost, function(err, newlyCreated){
         if(err){
             console.log(err)
@@ -84,7 +91,6 @@ router.put("/:id", middleware.checkPostOwnership,function(req, res){
             console.log(err)
             res.redirect("/posts")
         }else {
-            console.log(UpdatePost)
             res.redirect("/posts/" +req.params.id)
         }
     })

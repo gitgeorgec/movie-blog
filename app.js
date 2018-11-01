@@ -11,6 +11,7 @@ const postRoutes = require("./routes/posts")
 const commentRoutes = require("./routes/comments")
 const User = require("./models/user")
 
+
 const PORT = process.env.PORT||3000
 let apikey=""
 try {
@@ -53,11 +54,6 @@ app.use(function(req, res, next){
 app.use(indexRoutes)
 app.use("/posts", postRoutes)
 app.use("/comments", commentRoutes)
-
-app.get("/search", (req, res)=>{
-    res.render("search")
-})
-
 
 //apiCall
 function apicall(url,res){

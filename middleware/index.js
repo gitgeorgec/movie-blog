@@ -23,7 +23,7 @@ middlewareObj.checkCommentOwnership =function(req, res, next){
 
 middlewareObj.checkPostOwnership = function(req,res,next){
     if(req.isAuthenticated()){
-        Post.findById(req.params.commentId, function(err, foundPost){
+        Post.findById(req.params.id, function(err, foundPost){
             if(err|| !foundPost){
                 res.redirect("back")
             }else {

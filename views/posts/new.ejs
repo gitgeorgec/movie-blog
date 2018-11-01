@@ -1,32 +1,5 @@
 <% include ../partials/header %>
 <style>
-    .post {
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
-        font-size: 20px;
-        min-height: 90vh;
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    .post__head {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        background: rgba(0, 0, 0, 0.783);
-        box-sizing: border-box;
-        padding: 10px;
-    }
-
-    .post__title {
-        width: 70%;
-    }
-
-    .post__message {
-        padding: 15px;
-        min-height: 80vh;
-    }
-
     textarea[name=text] {
         width: 100%;
         min-height: 100vh;
@@ -37,23 +10,33 @@
 
     input[name=Title]{
         width: 100%;
-        font-size: 24px;
+        font-size: 28px;
         color: white;
         border: 0;
         background: rgba(155, 155, 155, 0.406)
+    }
+    input {
+        font-size: 1rem;
     }
 </style>
 <main>
     <div class="content__title">POST<hr></div>
     <form action="/posts" method="POST" class="post"  >
-        <h3><%= movieTitle%></h3>
-        <img src="<%= imgUrl%>">
+        <div class="post__head">
+            <h2 style="text-align:center; width: 100%;"><%= movieTitle%></h2>
+            <img src="<%= imgUrl%>" style="float:left; margin: 5px 15px">
+            <div style="width:50%">
+                <div><p>觀賞日期 : <input name="watchTime" type="date"></p></div>
+                <div><p>觀賞地點 : <input name="watchPlace" type="text" autocomplete="off"></p></div>
+                <div><p>評價 : <input name="rate" type="number" max="100" min="0"> 分 </p></div>
+            </div>
+        </div>
         <input type="text" name="movieId" value="<%= movieId%>" hidden>
         <input type="text" name="movieTitle" value="<%= movieTitle%>" hidden>
         <input type="text" name="imgUrl" value="<%= imgUrl%>" hidden>
         <div class="post__head">
             <div class="post__title">
-                <input type="text" name="Title" id="" placeholder="Place title here" autocomplete="off">
+                <input type="text" name="Title" id="" placeholder="Place title here" autocomplete="off" required>
             </div>
             <div class="post__user">
                 author: <%= currentUser.username%>
@@ -61,7 +44,7 @@
         </div>
         <div class="post__message">
             <textarea name="text" id="" cols="30" rows="10" placeholder="add your movie review here..." autocomplete="off"></textarea>
-                <button type="submit" style="text-align: end">post</button>
+            <p style="text-align:end"><button class="btn submit_btn" type="submit">MAKE A POST</button></p>
         </div>
     </form>
 </main>

@@ -4,12 +4,6 @@
             <span class="close">X</span>
             <div class="show__content"></div>
         </div>
-        <div class="content__title">RECENT MOVIE<hr></div>
-        <div style="text-align:center" >
-            <a href="search" class="search__button">find more</a> 
-        </div>
-        <div id="content1" class="content">
-        </div>
         <div class="content__title">RECENT POST<hr></div>
         <div class="content">
             <% for(let i=0; i<Math.min(5,(allposts.length)); i++){%>
@@ -19,52 +13,17 @@
                 </div>
             </div>
             <% }%>
-            <div style="text-align:center" >
-                <a href="posts" class="search__button">find more</a> 
+            <div style="text-align:center; margin-top:10px">
+                <a href="posts" class="submit_btn btn"> SEE MORE POST </a> 
             </div>
+        </div>
+        <div class="content__title">RECENT MOVIE<hr></div>
+        <div id="content1" class="content">
+        </div>
+        <div style="text-align:center; margin-bottom:10px " >
+            <a href="search" class="submit_btn btn">FIND MORE MOVIE</a> 
         </div>
     </main>
 
 <% include partials/footer %>
-<script>
-const show = document.querySelector(".show")
-const showContent = document.querySelector(".show__content")
-const showCloseBtn = show.querySelector(".close")
-const content = document.querySelector("#content1")
-function createContetCard(data){
-    const movieCard = document.createElement("div")
-    movieCard.classList.add("content__card")
-    movieCard.classList.add("small")
-    movieCard.classList.add("hide")
-    movieCard.id = data.id
-    movieCard.innerHTML=`
-    <div class="placeholder small">
-        <img src="https://image.tmdb.org/t/p/w200/${data.poster_path}" alt="no pic" height="180px" width="120px" class="content__card__img">
-    </div>
-    <h3 class="content__card__title">${data.original_title}</h3>
-    `
-    content.appendChild(movieCard)
-    setTimeout(()=>{
-        movieCard.classList.remove("hide")
-    },200)
-}
-
-function recentMovie(){
-    const url ="/recentMovie/1"
-    fetch(url)
-    .then(res=>res.json())
-    .then(res=>{
-        content.innerHTML=""
-        for(let i=0; i<3; i++){
-            createContetCard(res.results[i])
-        }
-    })
-}
-
-function closeShow(){
-    show.classList.add("hide")
-    showContent.innerHTML=""
-}
-showCloseBtn.addEventListener("click",closeShow)
-recentMovie()
-</script>
+<script src="../app/index.js"></script>

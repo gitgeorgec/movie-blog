@@ -2,46 +2,38 @@
     <main>
         <div class="content">
             <div class="content__title">
-                <p>Welcome <%= LoginUser.username %></p>
+                <p>Welcome <%= currentUser.username %></p>
                 <div >
-                    <% if(LoginUser.img){ %>
-                        <img src="<%= LoginUser.img%>" alt="nopic"/>
+                    <% if(currentUser.img){ %>
+                        <img src="<%%>" alt="nopic"/>
                     <% }else{ %>
-                        <i class="fas fa-user" ></i>
+                        <i class="fas fa-user"></i>
                     <% } %>
                 </div>
                 <hr>
             </div>
             <div class="collection">
-                <div class="collection__item">
-                    <div class="collection__title">recent article</div>
+                <div class="collection__title">
+                    <div data-link="post">MY POST</div>
+                    <div data-link="friend">my friends</div>
+                    <div data-link="password">change password</div>
+                </div>
+                <div id="post" class="collection__item">
                     <div class="collection__content">
-                        <div class="commit">
-                            <div class="commit__title">Movie1</div>
-                            <div class="commit_img">
-                                <img src="" alt="nopic">
+                    <% if(post){ %>
+                        <%for(let i=0; i<post.length; i++){%>
+                        <div class="content__card">
+                            <div class="content__card__title"><%=post[i].title%></div>
+                            rate : <%= post[i].rate%>
+                            <div class="placeholder">
+                                <img class="content__card__img" src="<%=post[i].imgUrl%>" alt="nopic">
                             </div>
-                            <div class="commit__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ipsa ratione quis autem cumque sunt sequi, pariatur nesciunt doloribus impedit, adipisci placeat! Sunt eum temporibus fugit explicabo placeat sint reiciendis!</div>
                         </div>
-                        <div class="commit">
-                            <div class="commit__title">Movie2</div>
-                            <div class="commit_img">
-                                <img src="" alt="nopic">
-                            </div>
-                            <div class="commit__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ipsa ratione quis autem cumque sunt sequi, pariatur nesciunt doloribus impedit, adipisci placeat! Sunt eum temporibus fugit explicabo placeat sint reiciendis!</div>
-                        </div>
-                        <div class="commit">
-                            <div class="commit__title">Movie3</div>
-                            <div class="commit_img">
-                                <img src="" alt="nopic">
-                            </div>
-                            <div class="commit__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ipsa ratione quis autem cumque sunt sequi, pariatur nesciunt doloribus impedit, adipisci placeat! Sunt eum temporibus fugit explicabo placeat sint reiciendis!</div>
-                        </div>
+                    <% }}%>
                     </div>
                 </div>
-                <div class="collection__item">
-                    <div class="collection__title">my friends</div>
-                    <div class="collection__content hide">
+                <div id="friend" class="collection__item none">
+                    <div class="collection__content">
                         <div class="friend">
                             <div class="friend__name">Tom</div>
                             <div class="friend_img">
@@ -62,8 +54,23 @@
                         </div>
                     </div>
                 </div>
+                <div id="password" class="collection__item none">
+                    <div class="collection__content">
+                        <form action="">
+                            <div>
+                                    old password
+                                <input type="text">
+                            </div>
+                            <div>
+                                new password
+                                <input type="text">
+                            </div>
+                            <button>submit</button>
+                        </form>
+                    </div>
+                </div>            
             </div>
         </div>
     </main>
-    <script src="../app/home.js"></script>
+    <script src="../app/user.js"></script>
 <% include partials/footer%>

@@ -1,17 +1,22 @@
 <% include ../partials/header %>
 <main>
-    <div class="content__title">RECENT POST<hr></div>
+    <div class="content__title">ALL POST<hr></div>
     <div class="content">
         <% for(let i=0; i<allPosts.length; i++){ %>
         <div class="content__list" data-movieId="<%= allPosts[i].movieId%>">
             <div class="content__list__item">
-                <p style="margin:0"><a href="/posts/<%=allPosts[i]._id %>"><img src="<%= allPosts[i].imgUrl%>" alt="" height="90px" width="60px" style="float:left;"><%= allPosts[i].title%></a></p>
+                <p style="margin:0"><a href="/posts/<%=allPosts[i]._id %>"><img src="<%= allPosts[i].imgUrl%>" alt="" height="90px" width="60px" style="float:left;"><%= allPosts[i].title%></a><a style="float:right"><%= allPosts[i].time%></a></p>
+                
             </div>
+            <%if(currentUser){%>
             <%if(allPosts[i].author.id.equals(currentUser._id)){%>
-            <div>
-                <button>delete</button>
-            </div>
-            <%}%>
+                <div class="user_control">
+                    <a href="/posts/<%=allPosts[i]._id%>/edit"><button class="edit_btn">EDIT</button></a>
+                    <form action="/posts/<%=allPosts[i]._id%>?_method=DELETE" method="POST">
+                        <button class="delete_btn">DELETE</button>
+                    </form>
+                </div>
+            <%}}%>
         </div>
         <% }%>
     </div>

@@ -6,6 +6,9 @@ var postSchema = new mongoose.Schema({
     movieId: String,
     movieTitle: String,
     imgUrl: String,
+    watchPlace: String,
+    watchTime: Object,
+    rate: Number,
     time:Object,
     author:{
         id:{

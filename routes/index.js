@@ -9,13 +9,20 @@ router.get("/", function(req, res){
 })
 
 router.get("/index", function(req, res){
-    Post.find({}, function(err, allposts){
+    Post.find({}, null, {sort: {time: -1}},function(err, allposts){
         if(err){
             console.log(err)
         }else {
             res.render("index",{allposts});
         }
     })
+})
+
+router.get("/search", (req, res)=>{
+    res.render("search")
+})
+router.get("/landing", (req, res)=>{
+    res.render("landing")
 })
 
 router.get("/signup",function(req, res){
@@ -67,5 +74,13 @@ router.get("/logout", function(req,res){
     // req.flash("success", "Logged you out")
     res.redirect("/index");
 });
-
+router.get("/user", (req, res)=>{
+    Post.find({"author.username":req.user.username},(err,foundPosts)=>{
+        if(err){
+            console.log(err)
+        }else {
+            res.render("user", {post:foundPosts})
+        }
+    })
+})
 module.exports = router;
